@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
 }
 
@@ -11,8 +11,129 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+enum ArticleStatus {
+  DRAFT
+  PUBLIC
+  DELETED
+}
+
+model Article {
+  id          String        @id @default(uuid()) @db.Char(36)
+  titleId     String        @db.Char(36)
+  summaryId   String        @db.Char(36)
+  thumbnailId String        @db.Char(36)
+  status      ArticleStatus
+  createAt    DateTime      @default(now())
+  updateAt    DateTime      @updatedAt
+
+  // Relations
+  title     Text   @relation("ArticleTitle", fields: [titleId], references: [id])
+  summary   Text   @relation("ArticleSummary", fields: [summaryId], references: [id])
+  thumbnail Image? @relation(fields: [thumbnailId], references: [id])
+
+  //中間テーブル
+  articleContents ArticleContents[]
+}
+
+model Content {
+  id          String   @id @default(uuid()) @db.Char(36)
+  name        String
+  description String?
+  contents    Json
+  componentId String   @db.Char(36)
+  createAt    DateTime @default(now())
+  updateAt    DateTime @updatedAt
+
+  // Relations
+  component Component? @relation(fields: [componentId], references: [id])
+
+  // 中間テーブル
+  articleContents ArticleContents[]
+  contentTexts    ContentTexts[]
+  contentImages   ContentImages[]
+}
+
+model Component {
+  id        String   @id @default(uuid()) @db.Char(36)
+  name      String
+  structure Json
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+
+  // Relations
+  contents Content[]
+}
+
+model Text {
+  id       String   @id @default(uuid()) @db.Char(36)
+  name     String
+  text     String
+  linkId   String?  @db.Char(36)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  // Relations
+  link Link? @relation(fields: [linkId], references: [id])
+
+  // 中間テーブル
+  contentTexts      ContentTexts[]
+  articlesAsTitle   Article[]      @relation("ArticleTitle")
+  articlesAsSummary Article[]      @relation("ArticleSummary")
+}
+
+model Image {
+  id       String   @id @default(uuid()) @db.Char(36)
+  name     String
+  imageURL String
+  linkId   String?  @db.Char(36)
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  // Relations
+  link Link? @relation(fields: [linkId], references: [id])
+
+  // 中間テーブル
+  contentImages ContentImages[]
+  Article       Article[]
+}
+
+model Link {
+  id       String   @id @default(uuid()) @db.Char(36)
+  name     String
+  link     String
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  // Relations
+  texts  Text[]
+  images Image[]
+}
+
+// 中間テーブル
+model ArticleContents {
+  articleId String  @db.Char(36)
+  contentId String  @db.Char(36)
+  order     Int
+  article   Article @relation(fields: [articleId], references: [id])
+  content   Content @relation(fields: [contentId], references: [id])
+
+  @@id([articleId, contentId])
+}
+
+model ContentTexts {
+  contentId String  @db.Char(36)
+  textId    String  @db.Char(36)
+  content   Content @relation(fields: [contentId], references: [id])
+  text      Text    @relation(fields: [textId], references: [id])
+
+  @@id([contentId, textId])
+}
+
+model ContentImages {
+  contentId String  @db.Char(36)
+  imageId   String  @db.Char(36)
+  content   Content @relation(fields: [contentId], references: [id])
+  image     Image   @relation(fields: [imageId], references: [id])
+
+  @@id([contentId, imageId])
 }
