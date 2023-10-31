@@ -1,14 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { GetArticleHeadingListService } from './getArticleHeadingList.service';
+import { ArticleService } from './article.service';
 
 @Controller('article')
 export class ArticleController {
-  constructor(
-    private getArticleHeadingListService: GetArticleHeadingListService,
-  ) {}
+  constructor(private articleService: ArticleService) {}
 
   @Get()
   getArticleHeadingList(): string {
-    return this.getArticleHeadingListService.exec();
+    return this.articleService.getArticleHeadingList();
   }
 }
