@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ArticleController } from './article.controller';
-import { GetArticleHeadingListService } from './getArticleHeadingList.service';
+import { ArticleService } from './article.service';
+import { ModelsModule } from 'src/functions/models/models.Module';
 
 @Module({
-  imports: [],
+  imports: [ModelsModule],
   controllers: [ArticleController],
-  providers: [GetArticleHeadingListService],
+  providers: [ArticleService],
 })
 export class ArticleModule {}
