@@ -53,7 +53,7 @@ export class ArticleSummaryEntity {
     createAt: Date;
     updateAt: Date;
   }) {
-    this.validateProps({
+    ArticleSummaryEntity.validateProps({
       id,
       articleId,
       imgUrl,

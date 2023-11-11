@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { ArticleSummaryRepository } from 'src/repositories/articleSummary/articleSummary.repository';
+import { IArticleSummaryRepository } from 'src/repositories/articleSummary/articleSummary.repository.interface';
 import { ArticleSummaryResult } from 'src/response.interface';
 
 @Injectable()
 export class ArticleSummaryService {
   constructor(
-    private readonly articleSummaryRepository: ArticleSummaryRepository,
+    private readonly articleSummaryRepository: IArticleSummaryRepository,
   ) {}
 
   async exec(): Promise<ArticleSummaryResult[]> {

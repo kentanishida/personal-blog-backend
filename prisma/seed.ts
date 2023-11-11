@@ -7,7 +7,7 @@ async function main() {
       id: '00000000-0000-0000-0000-000000000001',
     },
     create: {
-      id: '00000000-0000-0000-0000-000000000001',
+      id: '00000000-0000-4000-8000-000000000001',
       status: 'PUBLIC',
       articleHistory: {
         create: {
@@ -17,7 +17,7 @@ async function main() {
       },
       articleSummary: {
         create: {
-          imgUrl: 'example.com',
+          imgUrl: 'https://example.com',
           summary: 'テストサマリーだよよよよよよよよ',
           title: 'テストタイトル',
         },
