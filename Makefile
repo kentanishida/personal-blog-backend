@@ -21,6 +21,9 @@ gr:
 mg:
 	docker-compose exec api npx prisma migrate dev
 
+mgrt:
+	docker-compose exec api npx prisma migrate reset
+
 prrl:
 	docker compose exec api npx prisma-repl
 
