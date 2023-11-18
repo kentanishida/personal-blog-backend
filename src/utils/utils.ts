@@ -3,7 +3,7 @@ export const buildEntities = async <T, U>(
   builder: (item: T) => U,
 ): Promise<U[]> => {
   const builtEntities = entities.map((entity) => {
-    return builder(entity);
-  });
-  return builtEntities;
-};
+    return builder(entity)
+  })
+  return builtEntities
+}

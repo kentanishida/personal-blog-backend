@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { IArticleSummaryRepository } from 'src/repositories/articleSummary/articleSummary.repository.interface';
-import { GetArticleSummaryListResult } from 'src/response.interface';
-import { IArticleSummaryListService } from './articleSummaryList.service.interface';
+import { Injectable } from '@nestjs/common'
+import { IArticleSummaryRepository } from 'src/repositories/articleSummary/articleSummary.repository.interface'
+import { GetArticleSummaryListResult } from 'src/response.interface'
+import { IArticleSummaryListService } from './articleSummaryList.service.interface'
 
 @Injectable()
 export class ArticleSummaryListService implements IArticleSummaryListService {
@@ -10,7 +10,7 @@ export class ArticleSummaryListService implements IArticleSummaryListService {
   ) {}
 
   async get(): Promise<GetArticleSummaryListResult> {
-    const builtArticleSummaries = await this.articleSummaryRepository.findAll();
+    const builtArticleSummaries = await this.articleSummaryRepository.findAll()
 
     const response: GetArticleSummaryListResult = builtArticleSummaries.map(
       (builtArticleSummary) => ({
@@ -22,8 +22,8 @@ export class ArticleSummaryListService implements IArticleSummaryListService {
         createAt: builtArticleSummary.createAt,
         updateAt: builtArticleSummary.updateAt,
       }),
-    );
+    )
 
-    return response;
+    return response
   }
 }

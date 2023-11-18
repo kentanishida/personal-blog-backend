@@ -1,5 +1,5 @@
-import { GetArticleSummaryListResult } from 'src/response.interface';
+import { GetArticleSummaryListResult } from 'src/response.interface'
 
 export abstract class IArticleSummaryListService {
-  abstract get(): Promise<GetArticleSummaryListResult>;
+  abstract get(): Promise<GetArticleSummaryListResult>
 }

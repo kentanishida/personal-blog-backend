@@ -1,5 +1,5 @@
-import { ArticleSummaryEntity } from './articleSummary.entity';
-import { ValidateService } from './validation';
+import { ArticleSummaryEntity } from './articleSummary.entity'
+import { ValidateService } from './validation'
 
 describe('ArticleSummaryEntity', () => {
   describe('build', () => {
@@ -12,18 +12,18 @@ describe('ArticleSummaryEntity', () => {
         summary: 'Test Summary',
         createAt: new Date(),
         updateAt: new Date(),
-      };
+      }
 
-      const mockIsUuid = jest.fn();
-      ValidateService.prototype.isUuid = mockIsUuid;
-      mockIsUuid.mockReturnValue([]);
+      const mockIsUuid = jest.fn()
+      ValidateService.prototype.isUuid = mockIsUuid
+      mockIsUuid.mockReturnValue([])
 
-      const articleSummaryEntity = ArticleSummaryEntity.build(validInput);
+      const articleSummaryEntity = ArticleSummaryEntity.build(validInput)
 
-      expect(articleSummaryEntity).toBeDefined();
-      expect(articleSummaryEntity.id).toBe(validInput.id);
-      expect(articleSummaryEntity.articleId).toBe(validInput.articleId);
-    });
+      expect(articleSummaryEntity).toBeDefined()
+      expect(articleSummaryEntity.id).toBe(validInput.id)
+      expect(articleSummaryEntity.articleId).toBe(validInput.articleId)
+    })
 
     it('should throw ValidationError if imgUrl is invalid', () => {
       const invalidInput = {
@@ -34,13 +34,13 @@ describe('ArticleSummaryEntity', () => {
         summary: 'Test Summary',
         createAt: new Date(),
         updateAt: new Date(),
-      };
+      }
 
-      const mockIsUuid = jest.fn();
-      ValidateService.prototype.isUuid = mockIsUuid;
-      mockIsUuid.mockReturnValue([]);
+      const mockIsUuid = jest.fn()
+      ValidateService.prototype.isUuid = mockIsUuid
+      mockIsUuid.mockReturnValue([])
 
-      expect(() => ArticleSummaryEntity.build(invalidInput)).toThrowError();
-    });
-  });
-});
+      expect(() => ArticleSummaryEntity.build(invalidInput)).toThrowError()
+    })
+  })
+})

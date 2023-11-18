@@ -1,10 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { IArticleSummaryListService } from './services/articleSummary/articleSummaryList.service.interface';
+import { Controller, Get, Param } from '@nestjs/common'
+import { IArticleSummaryListService } from './services/articleSummary/articleSummaryList.service.interface'
 import {
   GetArticleResult,
   GetArticleSummaryListResult,
-} from './response.interface';
-import { IArticleService } from './services/article/article.service.interface';
+} from './response.interface'
+import { IArticleService } from './services/article/article.service.interface'
 
 @Controller('personal/v1')
 export class ArticleController {
@@ -17,7 +17,7 @@ export class ArticleController {
   async getArticleSummaryList(): Promise<GetArticleSummaryListResult> {
     return this.execServiceWrapper({
       asyncFunc: () => this.articleSummaryListService.get(),
-    });
+    })
   }
 
   @Get('/articles/:articleId')
@@ -27,20 +27,20 @@ export class ArticleController {
     return this.execServiceWrapper({
       asyncFunc: () => this.articleService.get({ id: params.articleId }),
       args: { id: params.articleId },
-    });
+    })
   }
 
   private async execServiceWrapper<T, U>({
     asyncFunc,
     args,
   }: {
-    asyncFunc: (args: T) => Promise<U>;
-    args?: T;
+    asyncFunc: (args: T) => Promise<U>
+    args?: T
   }): Promise<U> {
     try {
-      return await asyncFunc(args);
+      return await asyncFunc(args)
     } catch (e) {
-      throw e;
+      throw e
     }
   }
 }

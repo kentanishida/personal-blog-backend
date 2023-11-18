@@ -1,6 +1,6 @@
-import { ArticleStatus } from '@prisma/client';
-import { ArticleEntity } from './article.entity';
-import { ValidationError } from 'src/errors/errors';
+import { ArticleStatus } from '@prisma/client'
+import { ArticleEntity } from './article.entity'
+import { ValidationError } from 'src/errors/errors'
 
 describe('ArticleEntity', () => {
   describe('build', () => {
@@ -18,27 +18,25 @@ describe('ArticleEntity', () => {
           contentCreateAt: new Date(),
           contentUpdateAt: new Date(),
         },
-      };
-      const articleEntity = ArticleEntity.build(validInput);
+      }
+      const articleEntity = ArticleEntity.build(validInput)
 
-      expect(articleEntity).toBeDefined();
-      expect(articleEntity.id).toBe(validInput.id);
-      expect(articleEntity.title).toBe(validInput.title);
-      expect(articleEntity.imgUrl).toBe(validInput.imgUrl);
-      expect(articleEntity.createAt).toEqual(validInput.createAt);
-      expect(articleEntity.updateAt).toEqual(validInput.updateAt);
-      expect(articleEntity.status).toBe(validInput.status);
-      expect(articleEntity.content.contentId).toBe(
-        validInput.content.contentId,
-      );
-      expect(articleEntity.content.content).toBe(validInput.content.content);
+      expect(articleEntity).toBeDefined()
+      expect(articleEntity.id).toBe(validInput.id)
+      expect(articleEntity.title).toBe(validInput.title)
+      expect(articleEntity.imgUrl).toBe(validInput.imgUrl)
+      expect(articleEntity.createAt).toEqual(validInput.createAt)
+      expect(articleEntity.updateAt).toEqual(validInput.updateAt)
+      expect(articleEntity.status).toBe(validInput.status)
+      expect(articleEntity.content.contentId).toBe(validInput.content.contentId)
+      expect(articleEntity.content.content).toBe(validInput.content.content)
       expect(articleEntity.content.contentCreateAt).toEqual(
         validInput.content.contentCreateAt,
-      );
+      )
       expect(articleEntity.content.contentUpdateAt).toEqual(
         validInput.content.contentUpdateAt,
-      );
-    });
+      )
+    })
 
     it('should throw ValidationError if imgUrl is invalid', () => {
       const invalidInput = {
@@ -54,17 +52,17 @@ describe('ArticleEntity', () => {
           contentCreateAt: new Date(),
           contentUpdateAt: new Date(),
         },
-      };
+      }
 
       try {
-        ArticleEntity.build(invalidInput);
-        fail('Expected an error to be thrown');
+        ArticleEntity.build(invalidInput)
+        fail('Expected an error to be thrown')
       } catch (errors) {
-        expect(Array.isArray(errors)).toBe(true);
+        expect(Array.isArray(errors)).toBe(true)
         errors.forEach((error) => {
-          expect(error).toBeInstanceOf(ValidationError);
-        });
+          expect(error).toBeInstanceOf(ValidationError)
+        })
       }
-    });
-  });
-});
+    })
+  })
+})

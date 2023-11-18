@@ -1,9 +1,9 @@
 # 有効なPrettier設定
 singleQuote: true
-trailingComma: "all"
+trailingComma: 'all'
 tabWidth: 2
 semi: false
 printWidth: 80
 bracketSpacing: true
-arrowParens: "always"
+arrowParens: 'always'
 useTabs: false

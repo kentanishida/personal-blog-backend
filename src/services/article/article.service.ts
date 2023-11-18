@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { GetArticleResult } from 'src/response.interface';
-import { GetArticleArgs, IArticleService } from './article.service.interface';
-import { IArticleRepository } from 'src/repositories/article/article.repository.interface';
+import { Injectable } from '@nestjs/common'
+import { GetArticleResult } from 'src/response.interface'
+import { GetArticleArgs, IArticleService } from './article.service.interface'
+import { IArticleRepository } from 'src/repositories/article/article.repository.interface'
 
 @Injectable()
 export class ArticleService implements IArticleService {
@@ -13,7 +13,7 @@ export class ArticleService implements IArticleService {
       title,
       imgUrl,
       content: { contentId, content },
-    } = await this.articleRepository.findOrThrow({ id });
+    } = await this.articleRepository.findOrThrow({ id })
 
     return {
       id: articleId,
@@ -23,6 +23,6 @@ export class ArticleService implements IArticleService {
         id: contentId,
         content,
       },
-    };
+    }
   }
 }

@@ -44,4 +44,4 @@ module.exports = {
     'no-var': 'error', // varの使用を禁止
     'prefer-const': 'error', // 再代入されない変数はconstを使用
   },
-};
+}
