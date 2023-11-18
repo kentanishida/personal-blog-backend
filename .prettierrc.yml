@@ -1,0 +1,9 @@
+# 有効なPrettier設定
+singleQuote: true
+trailingComma: "all"
+tabWidth: 2
+semi: false
+printWidth: 80
+bracketSpacing: true
+arrowParens: "always"
+useTabs: false

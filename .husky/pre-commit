@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# コードをリントし、ステージングされた変更をフォーマット
 yarn lint-staged
+# 全てのコードファイルをPrettierでフォーマット 修正漏れ対策用
+yarn prettier --write .
+# テストを実行
 yarn test

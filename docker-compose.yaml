@@ -3,14 +3,14 @@ services:
   api:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       db:
         condition: service_healthy
-    command: ["yarn", "start:dev"]
+    command: ['yarn', 'start:dev']
     environment:
       - DATABASE_HOST=db
       - DATABASE_PORT=3306
@@ -28,11 +28,11 @@ services:
       MYSQL_DATABASE: master-portal-backend-dev
       MYSQL_ROOT_HOST: '%'
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
       interval: 10s
       timeout: 5s
       retries: 3

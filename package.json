@@ -24,12 +24,10 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.ts": [
       "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,less,sass,scss}": [
-      "stylelint --fix"
+      "prettier --write",
+      "git add"
     ]
   },
   "dependencies": {
