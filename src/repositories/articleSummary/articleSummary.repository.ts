@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ArticleSummaryEntity } from 'src/entities/articleSummary';
+import { ArticleSummaryEntity } from 'src/entities/articleSummary.entity';
 import { IArticleSummaryRepository } from './articleSummary.repository.interface';
 import { PrismaService } from 'nestjs-prisma';
 import { buildEntities } from 'src/utils/utils';

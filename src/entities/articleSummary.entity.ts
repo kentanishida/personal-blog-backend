@@ -1,5 +1,5 @@
 import { ValidationError } from 'src/errors/errors';
-import { ValidateService } from 'src/errors/validation';
+import { ValidateService } from 'src/entities/validation';
 
 export class ArticleSummaryEntity {
   readonly id: string;

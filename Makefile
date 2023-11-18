@@ -33,4 +33,10 @@ rl:
 db:
 	docker compose exec db mysql -u root -P 3306
 
+tt:
+	docker compose exec api yarn test
+
+ttw:
+	docker compose exec api yarn test:watch
+
 .PHONY: up down build logs rs gr mg prrl rl db

@@ -1,5 +1,5 @@
 import { validate } from 'uuid';
-import { ValidationError } from './errors';
+import { ValidationError } from '../errors/errors';
 
 export class ValidateService {
   isUuid({

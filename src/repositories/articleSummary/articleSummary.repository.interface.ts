@@ -1,4 +1,4 @@
-import { ArticleSummaryEntity } from 'src/entities/articleSummary';
+import { ArticleSummaryEntity } from 'src/entities/articleSummary.entity';
 
 export abstract class IArticleSummaryRepository {
   abstract findAll(): Promise<ArticleSummaryEntity[]>;

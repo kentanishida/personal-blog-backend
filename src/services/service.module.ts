@@ -1,16 +1,22 @@
 import { Module } from '@nestjs/common';
-import { ArticleSummaryService } from './articleSummary/articleSummary.service';
-import { IArticleSummaryService } from './articleSummary/articleSummary.service.interface';
+import { ArticleSummaryListService } from './articleSummary/articleSummaryList.service';
+import { IArticleSummaryListService } from './articleSummary/articleSummaryList.service.interface';
 import { RepositoryModule } from 'src/repositories/repository.module';
+import { IArticleService } from './article/article.service.interface';
+import { ArticleService } from './article/article.service';
 
 @Module({
   imports: [RepositoryModule],
   providers: [
     {
-      provide: IArticleSummaryService,
-      useClass: ArticleSummaryService,
+      provide: IArticleSummaryListService,
+      useClass: ArticleSummaryListService,
+    },
+    {
+      provide: IArticleService,
+      useClass: ArticleService,
     },
   ],
-  exports: [IArticleSummaryService],
+  exports: [IArticleSummaryListService, IArticleService],
 })
 export class ServiceModule {}
