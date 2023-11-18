@@ -5,10 +5,14 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: [
+    '@typescript-eslint/eslint-plugin',
+    'prettier', // Prettierプラグインを追加
+  ],
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
+    'prettier/@typescript-eslint', // PrettierとTypeScriptのESLintルールを競合させない
+    'prettier', // Prettierのルールを適用
   ],
   root: true,
   env: {
@@ -37,6 +41,7 @@ module.exports = {
     'no-return-assign': 'error', // return文内での代入を禁止
     'no-unused-expressions': 'error', // 使用されない式を禁止
     strict: ['error', 'global'], // 厳格モードを必須に
+    semi: ['error', 'never'], // セミコロンを禁止
     camelcase: 'error', // キャメルケースの強制
     'comma-spacing': 'error', // カンマの後の空白を強制
     'no-dupe-class-members': 'error', // クラスメンバーの重複を禁止
