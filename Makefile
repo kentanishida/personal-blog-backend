@@ -39,4 +39,10 @@ tt:
 ttw:
 	docker compose exec api yarn test:watch
 
+tte:
+	docker compose exec api yarn test:e2e
+
+ttew:
+	docker compose exec api yarn test:e2e:watch
+
 .PHONY: up down build logs rs gr mg prrl rl db
