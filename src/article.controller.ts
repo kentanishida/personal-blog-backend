@@ -6,7 +6,7 @@ import {
 } from './response.interface'
 import { IArticleService } from './services/article/article.service.interface'
 
-@Controller('personal/v1')
+@Controller('api/v1')
 export class ArticleController {
   constructor(
     private articleSummaryListService: IArticleSummaryListService,
