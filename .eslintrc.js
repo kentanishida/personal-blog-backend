@@ -11,8 +11,6 @@ module.exports = {
   ],
   extends: [
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint', // PrettierとTypeScriptのESLintルールを競合させない
-    'prettier', // Prettierのルールを適用
   ],
   root: true,
   env: {
